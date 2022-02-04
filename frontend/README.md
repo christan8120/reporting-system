@@ -4,17 +4,17 @@ This project structure is designed to create a new project everytime we want to 
 
 # Project structure
 
-|-- Application
-    |-- library
-    |-- src
-        |-- components
-            |-- ... (reuseable file for all project)
-            index.js  
-    |-- workspace
-        |-- Project 1
-        |-- Project 2
-    package.json
-    etc..
+|-- Application  
+&emsp;|-- library  
+&emsp;|-- src  
+&emsp;&emsp;|-- components  
+&emsp;&emsp;&emsp;|-- ... (reuseable file for all project)  
+&emsp;&emsp;index.js  
+&emsp;|-- workspace  
+&emsp;&emsp;|-- Project 1  
+&emsp;&emsp;|-- Project 2  
+&emsp;package.json  
+&emsp;etc..  
 
 ## Script to prepare the project
 
