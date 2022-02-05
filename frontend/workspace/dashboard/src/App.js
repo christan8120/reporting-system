@@ -1,16 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import { Header, Body, Footer } from 'reporting-system';
+import { Content } from 'reporting-system';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Body>
-        
-      </Body>
-      <Footer />
-    </div>
+      <Content>
+        Testinggg
+      </Content>
   );
 }
 
