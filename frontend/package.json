@@ -49,6 +49,7 @@
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-svg-import": "^1.6.0",
     "sass": "^1.49.7"
   },
   "peerDependencies": {

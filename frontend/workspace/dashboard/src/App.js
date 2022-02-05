@@ -5,7 +5,7 @@ import { Content } from 'reporting-system';
 function App() {
   return (
       <Content>
-        Testinggg
+        Content
       </Content>
   );
 }
