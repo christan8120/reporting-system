@@ -14,9 +14,6 @@
   }
 
   @media screen and (max-width: 1024px) {
-    .system_name{
-      
-    }
   }
 }
 
@@ -42,20 +39,130 @@
 
   @media screen and (max-width: 360px) {
       justify-content: flex-start;
-      margin-left: 1rem;
+      margin-left: 1rem;      
+  }
+
+  @media screen and (max-width: 600px) {
+    .system{
+      display: none;
+    }
+
+    .separator{
+      display: none;
+    }
   }
 }
 
 .top_menu_container{
-  display: flex;
-  align-items: center;
-  padding: var(--padding-sm);
+  display: flex;  
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 var(--padding-md);
   border-bottom: 1px solid rgb(211, 211, 211);
+  transition: height 0.3s;
   position: sticky;
   top: 0;
-  background: white;
+  background: white;    
+  height: 3rem;
+  user-select: none;
+
+  .breadcrumb_section{
+    display: none;
+  }
+
+  .sub_menu_section{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    align-items: center;
+    height: 100%;
+
+    .arrow{
+      display: flex;
+      border-radius: 50%;
+      transition: all ease-in-out 0.3s;
+      padding: 0.2rem;
+      cursor: pointer;
+      &:hover{
+        background: rgb(222 234 255);
+      }
+    }
+
+    .sub_menu_container{
+      display: flex;
+      transition: width .8s;
+      height: 100%;
+      width: 90%;      
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+
+      .sub_menu{
+        height: 100%;
+      }
+
+      a{
+        height: 100%;
+        text-align: center;
+        padding: 0 1rem;
+        word-break: break-word;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 180px;
+        text-decoration: none;
+        color: rgb(61, 74, 94);
+        transition: all ease-in-out 0.3s;
+
+        &:hover{
+          background: rgb(218 232 255);
+        }        
+      }
+
+      .active{
+        background: rgb(218 232 255);
+        color: rgb(61, 74, 94);
+      }
+    }
+  }  
+
+  .arrow_minimize{
+    cursor: pointer;
+    font-size: 0.7rem;
+    svg{
+      transform: scaleY(1);
+    }
+  }
 }
 
 .system_name{
   margin: auto 0;
+}
+
+.top_menu_container_hidden{  
+  justify-content: space-between;
+  height: 1rem;  
+  .sub_menu_section{
+    display: none;
+  }  
+  .breadcrumb_section{
+    display: flex;
+    font-size: 0.75rem;
+  }
+  .arrow_minimize{
+    svg{
+      transform: scaleY(-1);
+    }
+  }
+  .separator{
+    font-size: 0.7rem;
+  }
+}
+
+.separator{
+  font-size: 1.25rem;
+  margin: 0 0.5rem;
 }

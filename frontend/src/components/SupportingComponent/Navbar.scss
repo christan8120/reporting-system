@@ -1,18 +1,19 @@
 .navbar_container {
-  --color_nav_bg: rgb(30, 41, 59);
-  --color_nav_txt: rgb(100, 116, 139);
+  --color_nav_bg: rgb(111 148 209);
+  --color_nav_txt: rgb(22 22 22);
   --color_nav_ctg: rgb(226, 232, 240);
-  --color_nav_active: rgb(85, 79, 232);
+  --color_nav_active: rgb(255 255 255);
   --color_nav_not_active: rgb(61, 74, 94);
   --color_nav_active_bg: rgb(15, 23, 42);
-  --nav_width: 16rem;
+  --nav_width: 16rem;  
 
   background: var(--color_nav_bg);
   height: 100vh;
 
   padding: var(--padding-xxs) var(--padding-xxs);
   transition: transform 300ms ease-in-out;
-  
+  user-select: none;
+
   //MOBILE
   @media screen and (max-width: 1024px) {
     transform: translateX((-100%));
@@ -79,9 +80,9 @@ nav{
 }
 
 .categories{
-  color: var(--color_nav_txt);
+  color: rgb(255 255 255);
   text-transform: uppercase;
-  font-size: 0.8rem;  
+  font-size: 1rem;  
   margin-top: var(--margin-md);
   cursor: pointer;
   svg{

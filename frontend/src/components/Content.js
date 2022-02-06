@@ -8,7 +8,7 @@ import TopNavbar from './SupportingComponent/TopNavbar.jsx';
 import NavbarContext from '../context/NavbarContext.jsx';
 
 const Content = (props) => {
-  const [nav, setNav] = useState(false);
+  const [nav, setNav] = useState(false);  
   const value = { nav, setNav };
   return (
     <BrowserRouter>
@@ -16,7 +16,7 @@ const Content = (props) => {
         <NavbarContext.Provider value={value}>
           <Header />
           <div className='content'> 
-              <TopNavbar />              
+              <TopNavbar subMenuList={props.subMenuList} breadcrumb={props.breadcrumb}/>
               <main>
                 {props.children}
               </main>

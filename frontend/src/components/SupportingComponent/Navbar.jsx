@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 //STYLES
 import "./Navbar.scss";
 
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   MdOutlineDashboard,
   MdOutlineAnalytics,
@@ -16,7 +16,14 @@ import NavbarContext from '../../context/NavbarContext.jsx';
 
 const Navbar = () => {
 
+  const DASHBOARD = process.env.REACT_APP_DASHBOARD;
+  const DOMAIN = process.env.REACT_APP_DOMAIN;
   const { nav, setNav } = useContext(NavbarContext);
+  let location = window.location.href;
+  console.log(`location == DOMAIN ${location} == ${DOMAIN}`)
+  if(location == DOMAIN){
+    location += 'dashboard/';    
+  }
 
   const NavUrl = ({url, icon, description}) => {
     const checkWindowSize = () => {
@@ -24,15 +31,28 @@ const Navbar = () => {
         setNav(!nav);
       }
     }
+    console.log(`url: ${url}. location: ${location}`);
     return (
       <li className='li_navlink'>
-        <NavLink to={`${url}`}
-        onClick={() => checkWindowSize()}
-          className={({isActive}) => (isActive ? 'active' : undefined)}
-        >
-          {icon}
-          <span className={`description ${!nav ? 'display-none' : ''}`}>{description}</span>
-        </NavLink>
+        { location.includes(url) && 
+          <a
+          onClick={() => checkWindowSize()}
+            className={location.includes(url) ? 'active' : ''}
+          >
+            {icon}
+            <span className={`description ${!nav ? 'display-none' : ''}`}>{description}</span>
+          </a>
+        }
+        {
+          !location.includes(url) && 
+          <a href={`${url}`}
+          onClick={() => checkWindowSize()}
+            className={location.includes(url) ? 'active' : ''}
+          >
+            {icon}
+            <span className={`description ${!nav ? 'display-none' : ''}`}>{description}</span>
+          </a>
+        }
       </li> 
     )   
   };  
@@ -60,17 +80,17 @@ const Navbar = () => {
         </span>
         
         <NavUrl 
-          url="/" 
+          url={`http://localhost:3001/dashboard`} 
           icon={<MdOutlineDashboard />}
           description="Dashboard"
           />
         <NavUrl 
-          url="/product" 
+          url={`http://localhost:3003/product`} 
           icon={<MdOutlineAnalytics />}
           description="Product"
           />
         <NavUrl 
-          url="/report" 
+          url={`http://localhost:3002/report`} 
           icon={<MdOutlineAnalytics />}
           description="Report"
           />
