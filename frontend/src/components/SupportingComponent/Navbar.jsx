@@ -19,8 +19,7 @@ const Navbar = () => {
   const DASHBOARD = process.env.REACT_APP_DASHBOARD;
   const DOMAIN = process.env.REACT_APP_DOMAIN;
   const { nav, setNav } = useContext(NavbarContext);
-  let location = window.location.href;
-  console.log(`location == DOMAIN ${location} == ${DOMAIN}`)
+  let location = window.location.href;  
   if(location == DOMAIN){
     location += 'dashboard/';    
   }
@@ -31,7 +30,7 @@ const Navbar = () => {
         setNav(!nav);
       }
     }
-    console.log(`url: ${url}. location: ${location}`);
+    
     return (
       <li className='li_navlink'>
         { location.includes(url) && 

@@ -24,67 +24,69 @@ const TopNavbar = ({subMenuList, breadcrumb}) => {
 
   return(
     <React.Fragment>
-      <div className='container'>
-        <div className="burger_container"
-        onClick={() => setNav(!nav)}
-        >
-          <MdOutlineMenu />
-        </div>
+      <div className='outer_container'>
+        <div className='container'>
+          <div className="burger_container"
+          onClick={() => setNav(!nav)}
+          >
+            <MdOutlineMenu />
+          </div>
 
-        <div className="top_container">
-          <div className="system_name">
-            <span className='company'>Company Name</span>
-            <span className='separator'>|</span>
-            <span className='system'>Reporting System</span>
+          <div className="top_container">
+            <div className="system_name">
+              <span className='company'>Company Name</span>            
+              <span className='system'>Reporting System</span>
+            </div>
+            <div className='actions'>
+              <Notifications />
+            </div>
           </div>
-          <div className='actions'>
-            <Notifications />
-          </div>
+          <UserProfile />
         </div>
-        <UserProfile />
-      </div>
-      {subMenuList && 
-        <div className={`top_menu_container ${subNav ? `top_menu_container_hidden ${breadcrumb ? '' : 'flex-end'}` : undefined}`}>
-          <div className="sub_menu_section">
-            <div 
-              className='arrow'
-              onClick={moveLeft}
-            >
-              <BsChevronLeft />
-            </div>
-            <div className='sub_menu_container' id='sub_menu_container'>     
-              {                
-                subMenuList.map((v) => {
-                  return <div className='sub_menu' key={v.id}>
-                    <NavLink to={v.link}>{v.description}</NavLink>
-                  </div>
-                })              
-              }
-            </div>
-            <div 
-              className='arrow'
-              onClick={moveRight}
+      
+        {subMenuList && 
+          <div className={`top_menu_container ${subNav ? `top_menu_container_hidden ${breadcrumb ? '' : 'flex-end'}` : undefined}`}>
+            <div className="sub_menu_section">
+              <div 
+                className='arrow'
+                onClick={moveLeft}
               >
-              <BsChevronRight />
-            </div>
-          </div>
-          {breadcrumb && 
-            <div className='breadcrumb_section'>
-                {
-                  breadcrumb.map((v, i) => {
-                    return <React.Fragment key={i}>
-                      <span>{v.description}</span>
-                      { i != breadcrumb.length-1 && <span className='separator'>&gt;&gt;</span>}
-                    </React.Fragment>
-                  })
+                <BsChevronLeft />
+              </div>
+              <div className='sub_menu_container' id='sub_menu_container'>     
+                {                
+                  subMenuList.map((v) => {
+                    return <div className='sub_menu' key={v.id}>
+                      <NavLink to={v.link}>{v.description}</NavLink>
+                    </div>
+                  })              
                 }
+              </div>
+              <div 
+                className='arrow'
+                onClick={moveRight}
+                >
+                <BsChevronRight />
+              </div>
             </div>
-          }
-          <div className='arrow_minimize' onClick={() => setSubNav(!subNav)}>
-            <FaAngleDoubleUp /> 
+            {breadcrumb && 
+              <div className='breadcrumb_section'>
+                  {
+                    breadcrumb.map((v, i) => {
+                      return <React.Fragment key={i}>
+                        <span>{v.description}</span>
+                        { i != breadcrumb.length-1 && <span className='separator'>&gt;&gt;</span>}
+                      </React.Fragment>
+                    })
+                  }
+              </div>
+            }
+            <div className='arrow_minimize' onClick={() => setSubNav(!subNav)}>
+              <FaAngleDoubleUp /> 
+            </div>
           </div>
-        </div>
-      }
+        }
+      </div>
     </React.Fragment>
   )
 }

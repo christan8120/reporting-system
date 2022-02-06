@@ -49,7 +49,7 @@ nav{
   .logo_icon, .mobile_cancel_icon{
     color: var(--color_nav_active);
   }
-
+  
   @media screen and (max-width: 1024px) {
     .logo_icon{
       display: none;
