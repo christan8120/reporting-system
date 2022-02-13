@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 //STYLES
 import "./Navbar.scss";
 
-import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   MdOutlineDashboard,
   MdOutlineAnalytics,
@@ -18,7 +17,7 @@ const Navbar = () => {
 
   const DASHBOARD = process.env.REACT_APP_DASHBOARD;
   const DOMAIN = process.env.REACT_APP_DOMAIN;
-  const { nav, setNav } = useContext(NavbarContext);
+  const { nav, setNav, setLocalNav } = useContext(NavbarContext);
   let location = window.location.href;  
   if(location == DOMAIN){
     location += 'dashboard/';    
@@ -27,7 +26,7 @@ const Navbar = () => {
   const NavUrl = ({url, icon, description}) => {
     const checkWindowSize = () => {
       if(window.innerWidth < 1024){
-        setNav(!nav);
+        setLocalNav();
       }
     }
     
@@ -60,7 +59,7 @@ const Navbar = () => {
     <nav className={`${nav ? undefined : 'nav_small'}`}>
       <div 
         className={`logo`}
-        onClick={() => setNav(!nav)}
+        onClick={() => setLocalNav()}
       >
         { !nav && <MdOutlineMenu className='logo_icon'/> }
         { nav && <MdClear className='mobile_cancel_icon'/> }        
@@ -73,7 +72,7 @@ const Navbar = () => {
         {/* First category */}
         <span 
           className="categories"
-          onClick={() => setNav(!nav)}
+          onClick={() => setLocalNav()}
           >
           {nav ? "Pages" : <BsThreeDots />}
         </span>
@@ -97,7 +96,7 @@ const Navbar = () => {
         {/* Second Category */}
         <span 
           className='categories second_category'
-          onClick={() => setNav(!nav)}
+          onClick={() => setLocalNav()}
         >
           {nav ? "More" : <BsThreeDots />}                          
         </span>
@@ -114,13 +113,13 @@ const Navbar = () => {
       </ul>
       {/* Logout */}
       <div className="btn_logout"
-            onClick={() => setNav(!nav)}
+            onClick={() => setLocalNav()}
           >
             <MdOutlineLogout />
           </div>
     </nav>
     <div className={`${nav ? 'mobile_nav_background_active' : undefined}`}
-      onClick={() => setNav(!nav)}
+      onClick={() => setLocalNav()}
     >
     </div>
   </div>

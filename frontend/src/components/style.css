@@ -50,3 +50,8 @@ main{
 div, main, span, label, p, a{
   -webkit-tap-highlight-color: transparent
 }
+
+hr{
+  opacity: 0.5;
+  margin-bottom: 2rem;
+}

@@ -17,7 +17,7 @@ Notification.defaultProps = {
   content:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nesciunt voluptatum minima aut numquam saepe",
   title: "Lorem ipsum dolor sit.",
-  date: "11/12/21",
+  date: "3 Feb 2022",
 };
 
 const Notifications = () => {

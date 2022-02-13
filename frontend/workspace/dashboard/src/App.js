@@ -1,5 +1,6 @@
 import './App.css';
 import { Content } from 'reporting-system';
+import MainPage from './page/mainpage';
 
 function App() {
   const subMenuList = [
@@ -34,7 +35,9 @@ function App() {
   ]
   return (
       <Content subMenuList={subMenuList} breadcrumb={breadcrumb}>
-        Content
+        <h2>Dashboard</h2>
+        <hr />
+        <MainPage />
       </Content>
   );
 }

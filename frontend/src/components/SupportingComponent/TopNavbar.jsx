@@ -5,13 +5,12 @@ import UserProfile from './UserProfile.jsx';
 import './TopNavbar.scss';
 import NavbarContext from '../../context/NavbarContext.jsx';
 import Notifications from './Notification.jsx';
-import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import { FaAngleDoubleUp } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 
 const TopNavbar = ({subMenuList, breadcrumb}) => {
-  const { nav, setNav } = useContext(NavbarContext);
+  const { nav, setNav, setLocalNav } = useContext(NavbarContext);
   const [subNav, setSubNav] = useState(false);
 
   const moveRight = (e) => {
@@ -27,7 +26,7 @@ const TopNavbar = ({subMenuList, breadcrumb}) => {
       <div className='outer_container'>
         <div className='container'>
           <div className="burger_container"
-          onClick={() => setNav(!nav)}
+          onClick={() => setLocalNav()}
           >
             <MdOutlineMenu />
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import './style.css';
 import './Content.scss';
 
@@ -8,8 +8,14 @@ import TopNavbar from './SupportingComponent/TopNavbar.jsx';
 import NavbarContext from '../context/NavbarContext.jsx';
 
 const Content = (props) => {
-  const [nav, setNav] = useState(false);  
-  const value = { nav, setNav };
+  const initNav = localStorage.getItem('showNav') == "true" ? true : false;
+  const [nav, setNav] = useState(initNav);
+  const setLocalNav = useCallback(() => {
+    setNav(!nav);
+    localStorage.setItem('showNav', !nav);
+  },[nav]);
+
+  const value = { nav, setNav, setLocalNav };
   return (
     <BrowserRouter>
       <div className='App'>
