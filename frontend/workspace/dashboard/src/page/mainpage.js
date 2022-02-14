@@ -54,7 +54,7 @@ const MainPage = () => {
         <div className="dashboard_content_option">
           <div>
             <TextField label="Store" variant="standard" select>
-              <MenuItem value="1">Jeimart</MenuItem>
+              <MenuItem value="1">Testing</MenuItem>
             </TextField>
           </div>
           <div>
