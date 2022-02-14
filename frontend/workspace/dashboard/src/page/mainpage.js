@@ -2,9 +2,18 @@ import React from "react";
 import Chart from "react-apexcharts";
 import { CardView, Field, Input } from "reporting-system";
 
+import TextField from '@mui/material/TextField';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import DatePicker from '@mui/lab/DatePicker';
+import Stack from '@mui/material/Stack';
+import { format } from 'date-fns';
+
 import './mainpage.scss';
+import { MenuItem } from "@mui/material";
 
 const MainPage = () => {
+  const [value, setValue] = React.useState(new Date());
   const options = {
     chart: {
       id: "basic-bar",
@@ -39,28 +48,56 @@ const MainPage = () => {
 
   return (
     <React.Fragment>
-      <div className="dashboard_content_option">
-        <Field label="Store">
-          <Input type="text"/>
-        </Field>
-        <Field label="Merchant">
-          <Input type="text"/>
-        </Field>
-        <Field label="Show graph by">
-          <Input type="text"/>
-        </Field>
-        <Field label="Start">
-          <Input type="text"/>
-        </Field>
-        <Field label="End">
-          <Input type="text"/>
-        </Field>
-      </div>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>      
+        
+      
+        <div className="dashboard_content_option">
+          <div>
+            <TextField label="Store" variant="standard" select>
+              <MenuItem value="1">Jeimart</MenuItem>
+            </TextField>
+          </div>
+          <div>
+          <TextField label="Merchant" variant="standard" select>
+            <MenuItem value="1">Tokopedia</MenuItem>
+          </TextField>
+          </div>
+          <div>
+            <TextField label="Show by" variant="standard" select>
+              <MenuItem value="1">Monthly</MenuItem>
+            </TextField>
+          </div>
+          <div>
+            <DatePicker            
+              label="Start date"
+              openTo="day"
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+              }}
+              renderInput={(params) => <TextField variant="standard" {...params} />}            
+              tFormat="dd/MM/yyyy"
+            />
+          </div>
+          <div>
+            <DatePicker            
+              label="End date"
+              openTo="day"
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+              }}
+              renderInput={(params) => <TextField variant="standard" {...params} />}            
+              tFormat="dd/MM/yyyy"
+            />
+          </div>
+        </div>
+      </LocalizationProvider>
       <div className="content_summarize">
         <CardView>
           <div className="dashboard_card_header">
-            <h4>Total transaksi</h4>
-            <p>lihat semua</p>            
+            <h4>transaksi</h4>
+            <p>detail</p>            
           </div>
           <div className="dashboard_card_content">
             43
@@ -68,8 +105,8 @@ const MainPage = () => {
         </CardView>
         <CardView>
           <div className="dashboard_card_header">
-            <h4>Total pendapatan</h4>
-            <p>lihat semua</p>            
+            <h4>pendapatan</h4>
+            <p>detail</p>            
           </div>
           <div className="dashboard_card_content">
             43
@@ -77,8 +114,8 @@ const MainPage = () => {
         </CardView>
         <CardView>
           <div className="dashboard_card_header">
-            <h4>Total pendapatan bersih</h4>
-            <p>lihat semua</p>            
+            <h4>pendapatan bersih</h4>
+            <p>detail</p>            
           </div>
           <div className="dashboard_card_content">
             43
@@ -86,8 +123,8 @@ const MainPage = () => {
         </CardView>
         <CardView>
           <div className="dashboard_card_header">
-            <h4>Total pengeluaran</h4>
-            <p>lihat semua</p>            
+            <h4>pengeluaran</h4>
+            <p>detail</p>            
           </div>
           <div className="dashboard_card_content">
             43
@@ -95,8 +132,8 @@ const MainPage = () => {
         </CardView>
         <CardView>
           <div className="dashboard_card_header">
-            <h4>Total produk terjual</h4>
-            <p>lihat semua</p>            
+            <h4>produk terjual</h4>
+            <p>detail</p>            
           </div>
           <div className="dashboard_card_content">
             43

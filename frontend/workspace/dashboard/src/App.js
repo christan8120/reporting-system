@@ -34,7 +34,7 @@ function App() {
     }
   ]
   return (
-      <Content subMenuList={subMenuList} breadcrumb={breadcrumb}>
+      <Content>
         <h2>Dashboard</h2>
         <hr />
         <MainPage />

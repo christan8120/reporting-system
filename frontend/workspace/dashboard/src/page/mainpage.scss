@@ -32,9 +32,6 @@
       grid-column: 1/2;
     } 
   }
-  .header_chart{
-
-  }
   
   .view_chart {  
     margin-top: auto;
@@ -86,4 +83,24 @@
   margin: 1rem 0;
   display: flex;
   flex-wrap: wrap;
+
+  >div{
+    margin: 0 1rem 1rem 0;
+    width: 15%;
+    >div{
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 876px) {
+    >div{
+      width: 20%;
+    }
+  }
+
+  @media screen and (max-width: 590px) {
+    >div{
+      width: 100%;
+    }
+  }
 }
