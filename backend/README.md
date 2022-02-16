@@ -18,14 +18,14 @@ Before you run the service, you need to run the following scripts:
 ### In the service folder that you are want to run (./Application/Service 1)
 
 Open terminal and run scripts:  
-1 npm install 
-2 nodemon app.js
+1 npm install  
+2 nodemon app.js  
 
 ### If you are having problem while running the nodemon script (OPTIONAL)
 
-run the following script: 
-1 npm install nodemon -g
-2 nodemon app.js
+run the following script:  
+1 npm install nodemon -g  
+2 nodemon app.js  
 
 ### A little information about the service architecture
 
