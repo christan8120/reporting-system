@@ -4,11 +4,11 @@ This project contains all services that are needed for the frontend. Each servic
 
 # Project structure
 
-|-- Application Name 
-&emsp;|-- Service 1
+|-- Application Name  
+&emsp;|-- Service 1  
 &emsp;&emsp;|-- app.js  
-&emsp;|-- Service 2
-&emsp;&emsp;|-- app.js   
+&emsp;|-- Service 2  
+&emsp;&emsp;|-- app.js  
 &emsp;etc..  
 
 ## Script to prepare the project
