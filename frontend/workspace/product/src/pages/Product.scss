@@ -1,0 +1,7 @@
+.product_box .table_container{
+  max-height: 40vh !important;
+  
+  @media screen and (max-width: 876px) {
+    max-height: 350px !important;
+  }
+}

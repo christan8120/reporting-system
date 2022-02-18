@@ -1,6 +1,12 @@
 import './App.css';
 import { Content } from 'reporting-system';
 import Product from './pages/Products';
+import Add from './pages/Add';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes as Switch
+} from 'react-router-dom'
 
 function App() {
 
@@ -26,10 +32,11 @@ function App() {
   ]
 
   return (
-    <Content>
-        <h2>Produk</h2>
-        <hr />
-        <Product />
+    <Content> 
+        <Switch>
+          <Route path='/product' element={<Product />} />
+          <Route path='/product/add' element={<Add />} />
+        </Switch>
     </Content>
   );
 }

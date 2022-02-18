@@ -22,6 +22,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SearchIcon from '@mui/icons-material/Search';
 import { visuallyHidden } from '@mui/utils';
 import { Button, Input, InputBase, TextField } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import './Table.scss';
 
 const EnhancedTable = props => {    
   const rows = props.data
@@ -68,6 +71,8 @@ const EnhancedTable = props => {
     return (
       <TableHead>
         <TableRow>
+          {props.isCollapsed && <TableCell />}
+          {props.checkbox &&
           <TableCell padding="checkbox">
             <Checkbox
               color="primary"
@@ -79,6 +84,7 @@ const EnhancedTable = props => {
               }}
             />
           </TableCell>
+          }
           {headCells.map((headCell) => (
             <TableCell
               key={headCell.id}
@@ -100,11 +106,13 @@ const EnhancedTable = props => {
               </TableSortLabel>
             </TableCell>
           ))}
+          {props.actionButton.show && 
           <TableCell
             padding={'normal'}
           >
             Action
           </TableCell>
+          }
         </TableRow>
       </TableHead>
     );
@@ -121,7 +129,7 @@ const EnhancedTable = props => {
   
   const EnhancedTableToolbar = (props) => {
     const { numSelected } = props;
-  
+    
     return (
       <Toolbar
         sx={{
@@ -239,8 +247,8 @@ const EnhancedTable = props => {
   return (
     <React.Fragment>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
-        <TableContainer>
+        <EnhancedTableToolbar numSelected={selected.length} title={props.title}/>
+        <TableContainer className="table_container">
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
@@ -253,6 +261,9 @@ const EnhancedTable = props => {
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
+              isCollapsed={props.isCollapsed}
+              actionButton={props.actionButton}
+              checkbox={props.checkbox}
             />
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
@@ -270,8 +281,19 @@ const EnhancedTable = props => {
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.id}
-                      selected={isItemSelected}
+                      selected={isItemSelected}                      
                     >
+                      {props.isCollapsed && <TableCell>
+                        <IconButton
+                          aria-label="expand row"
+                          size="small"
+                          onClick={() => setOpen(!open)}
+                        >
+                          {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                        </IconButton>
+                      </TableCell>
+                      }
+                      {props.checkbox &&
                       <TableCell padding="checkbox">
                         <Checkbox
                           color="primary"
@@ -281,31 +303,29 @@ const EnhancedTable = props => {
                           }}
                         />
                       </TableCell>
+                      }
                       {
                         headCells.map((header, index) => {
                           
-                          if(index == 0)
-                          return (
-
-                            <TableCell
-                              component="th"
-                              id={labelId}
-                              scope="row"
-                              padding="none"
-                              key={header.id}
-                              onClick={(event) => handleClick(event, row['id'])}
+                          return(
+                            <TableCell 
+                              padding="none" 
+                              key={header.id} 
+                              onClick={(event) => { props.checkbox ? handleClick(event, row['id']) : "";}} 
+                              className="table_cell"
                             >
                               {row[header.id]}
                             </TableCell>
                           )
-                          return (
-                            <TableCell key={header.id} align="right" onClick={(event) => handleClick(event, row['id'])}>{row[header.id]}</TableCell>
-                          )
                         })
                       }
+                      {props.actionButton.show && 
                       <TableCell>
-                        <Button variant="outlined">Edit</Button>
+                        {props.actionButton.edit && <Button variant="outlined" onClick={props.editHandler}>Edit</Button>}
+                        {props.actionButton.view && <Button variant="outlined" onClick={props.viewHandler}>View</Button>}
+                        {props.actionButton.delete && <Button variant="outlined" onClick={props.deleteHandler}>Delete</Button>}
                       </TableCell>
+                      }
                     </TableRow>
                   );
                 })}
@@ -315,7 +335,7 @@ const EnhancedTable = props => {
                     height: (dense ? 33 : 53) * emptyRows,
                   }}
                 >
-                  <TableCell colSpan={6} />
+                  <TableCell colSpan={9999} />
                 </TableRow>
               )}
             </TableBody>
@@ -331,10 +351,10 @@ const EnhancedTable = props => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
+      {/* <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
-      />
+      /> */}
     </React.Fragment>
   );
 }

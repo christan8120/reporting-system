@@ -6,8 +6,6 @@ import TextField from '@mui/material/TextField';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker from '@mui/lab/DatePicker';
-import Stack from '@mui/material/Stack';
-import { format } from 'date-fns';
 
 import './mainpage.scss';
 import { MenuItem } from "@mui/material";
@@ -54,7 +52,7 @@ const MainPage = () => {
         <div className="dashboard_content_option">
           <div>
             <TextField label="Store" variant="standard" select>
-              <MenuItem value="1">Testing</MenuItem>
+              <MenuItem value="1">Toko 1</MenuItem>
             </TextField>
           </div>
           <div>

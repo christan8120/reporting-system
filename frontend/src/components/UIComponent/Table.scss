@@ -1,0 +1,9 @@
+.table_container{      
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+.table_cell{
+  padding: 16px 0 !important;
+}
